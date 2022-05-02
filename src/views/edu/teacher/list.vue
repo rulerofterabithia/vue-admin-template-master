@@ -116,8 +116,9 @@ export default {
   methods: {
     //创建具体的方法，调用teacher.js定义的方法
     //讲师列表的方法
-    getList(page = 1) {//默认是查询第1页
-      this.page = page;//传的是第几页就查询第几页，例如this.page = 2，就是查询第2页的数据
+    getList(page = 1) {
+      //默认是查询第1页
+      this.page = page; //传的是第几页就查询第几页，例如this.page = 2，就是查询第2页的数据
       teacher
         .getTeacherListPage(this.page, this.limit, this.teacherQuery)
         .then((response) => {
