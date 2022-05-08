@@ -106,7 +106,7 @@ export default {
     //关闭上传弹窗的方法
     close() {
       this.imagecropperShow = false;
-      //上传组件初始化
+      //上传组件初始化，防止下次打开上传讲师头像弹窗还是上一次上传之后的状态
       this.imagecropperKey = this.imagecropperKey + 1;
     },
     //上传成功的方法
