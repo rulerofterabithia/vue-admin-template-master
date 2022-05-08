@@ -43,7 +43,7 @@
       :url：后台上传的url地址
       @close：关闭上传组件
       @crop-upload-success：上传成功后的回调 
-        <input type="file" name="file"/>
+      其中field="file"和<input type="file" name="file"/>类似，是文件上传输入项
       -->
         <image-cropper
           v-show="imagecropperShow"
