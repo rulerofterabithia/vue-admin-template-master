@@ -5,11 +5,7 @@
         <el-input v-model="teacher.name" />
       </el-form-item>
       <el-form-item label="讲师排序">
-        <el-input-number
-          v-model="teacher.sort"
-          controls-position="right"
-          min="0"
-        />
+        <el-input-number v-model="teacher.sort" controls-position="right" min="0" />
       </el-form-item>
       <el-form-item label="讲师头衔">
         <el-select v-model="teacher.level" clearable placeholder="请选择">
@@ -30,11 +26,7 @@
         <!-- 头衔缩略图 -->
         <pan-thumb :image="teacher.avatar" />
         <!-- 文件上传按钮 -->
-        <el-button
-          type="primary"
-          icon="el-icon-upload"
-          @click="imagecropperShow = true"
-          >更换头像
+        <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow = true">更换头像
         </el-button>
 
         <!--
@@ -45,25 +37,12 @@
       @crop-upload-success：上传成功后的回调 
       其中field="file"和<input type="file" name="file"/>类似，是文件上传输入项
       -->
-        <image-cropper
-          v-show="imagecropperShow"
-          :width="300"
-          :height="300"
-          :key="imagecropperKey"
-          :url="BASE_API + '/eduoss/fileoss'"
-          field="file"
-          @close="close"
-          @crop-upload-success="cropSuccess"
-        />
+        <image-cropper v-show="imagecropperShow" :width="300" :height="300" :key="imagecropperKey"
+          :url="BASE_API + '/eduoss/fileoss'" field="file" @close="close" @crop-upload-success="cropSuccess" />
       </el-form-item>
 
       <el-form-item>
-        <el-button
-          :disabled="saveBtnDisabled"
-          type="primary"
-          @click="saveOrUpdate"
-          >保存</el-button
-        >
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
