@@ -82,7 +82,7 @@ export default {
         level: 1,
         career: "",
         intro: "",
-        avatar: "https://guli-academy-edu.oss-cn-beijing.aliyuncs.com/2022/05/08/default_avatar.jpg",//默认头像
+        avatar: "https://guli-academy-edu.oss-cn-beijing.aliyuncs.com/2022/05/08/default_avatar.jpg",//默认讲师头像
       },
       //上传弹框组件是否显示
       imagecropperShow: false,
