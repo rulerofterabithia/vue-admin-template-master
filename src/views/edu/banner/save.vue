@@ -5,11 +5,7 @@
         <el-input v-model="banner.title" />
       </el-form-item>
       <el-form-item label="幻灯片排序">
-        <el-input-number
-          v-model="banner.sort"
-          controls-position="right"
-          :min="0"
-        />
+        <el-input-number v-model="banner.sort" controls-position="right" :min="0" />
       </el-form-item>
       <el-form-item label="图片阿里云url">
         <el-input v-model="banner.imageUrl" />
@@ -19,12 +15,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button
-          :disabled="saveBtnDisabled"
-          type="primary"
-          @click="saveOrUpdate"
-          >保存</el-button
-        >
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -116,7 +107,7 @@ export default {
         this.banner = resp.data.item;
       });
     },
-    
+
   },
 };
 </script>
