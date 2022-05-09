@@ -9,10 +9,11 @@
         </el-tag>
       </el-form-item>
 
+      <!--accept="application/vnd.ms-excel"-->
       <el-form-item label="选择Excel">
         <el-upload ref="upload" :auto-upload="false" :on-success="fileUploadSuccess" :on-error="fileUploadError"
           :disabled="importBtnDisabled" :limit="1" :action="BASE_API + '/eduservice/subject/addSubject'" name="file"
-          accept="application/vnd.ms-excel">
+          accept=".xlsx">
           <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
           <el-button :loading="loading" style="margin-left: 10px" size="small" type="success" @click="submitUpload">
             上传到服务器</el-button>
