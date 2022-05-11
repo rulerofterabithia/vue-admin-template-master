@@ -1,21 +1,11 @@
 <template>
   <div class="app-container">
-    <el-form
-      ref="role"
-      :model="role"
-      :rules="validateRules"
-      label-width="120px"
-    >
+    <el-form ref="role" :model="role" :rules="validateRules" label-width="120px">
       <el-form-item label="角色名称" prop="roleName">
         <el-input v-model="role.roleName" />
       </el-form-item>
       <el-form-item>
-        <el-button
-          :disabled="saveBtnDisabled"
-          type="primary"
-          @click="saveOrUpdate"
-          >保存</el-button
-        >
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveOrUpdate">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -60,7 +50,7 @@ export default {
   methods: {
     // 表单初始化
     init() {
-      
+
       if (this.$route.params && this.$route.params.id) {
         const id = this.$route.params.id;
         this.fetchDataById(id);

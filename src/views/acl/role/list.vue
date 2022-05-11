@@ -6,38 +6,18 @@
         <el-input v-model="searchObj.roleName" placeholder="角色名称" />
       </el-form-item>
 
-      <el-button type="primary" icon="el-icon-search" @click="fetchData()"
-        >查询</el-button
-      >
+      <el-button type="primary" icon="el-icon-search" @click="fetchData()">查询</el-button>
       <el-button type="default" @click="resetData()">清空</el-button>
     </el-form>
 
     <!-- 工具条 -->
     <div>
-      <el-button
-        type="danger"
-        size="mini"
-        @click="addUser()"
-        v-if="hasPerm('role.add')"
-        >添加</el-button
-      >
-      <el-button
-        type="danger"
-        size="mini"
-        @click="removeRows()"
-        v-if="hasPerm('role.remove')"
-        >批量删除</el-button
-      >
+      <el-button type="danger" size="mini" @click="addUser()" v-if="hasPerm('role.add')">添加</el-button>
+      <el-button type="danger" size="mini" @click="removeRows()" v-if="hasPerm('role.remove')">批量删除</el-button>
     </div>
 
     <!-- 讲师列表 -->
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      stripe
-      style="width: 100%"
-      @selection-change="handleSelectionChange"
-    >
+    <el-table v-loading="listLoading" :data="list" stripe style="width: 100%" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" />
 
       <el-table-column label="序号" width="70" align="center">
@@ -51,43 +31,21 @@
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
           <router-link :to="'/acl/role/distribution/' + scope.row.id">
-            <el-button
-              type="info"
-              size="mini"
-              icon="el-icon-info"
-              v-if="hasPerm('role.acl')"
-            ></el-button>
+            <el-button type="info" size="mini" icon="el-icon-info" v-if="hasPerm('role.acl')"></el-button>
           </router-link>
           <router-link :to="'/acl/role/update/' + scope.row.id">
-            <el-button
-              type="primary"
-              size="mini"
-              icon="el-icon-edit"
-              v-if="hasPerm('role.update')"
-            ></el-button>
+            <el-button type="primary" size="mini" icon="el-icon-edit" v-if="hasPerm('role.update')"></el-button>
           </router-link>
-          <el-button
-            type="danger"
-            size="mini"
-            icon="el-icon-delete"
-            @click="removeDataById(scope.row.id)"
-            v-if="hasPerm('role.remove')"
-          ></el-button>
+          <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)"
+            v-if="hasPerm('role.remove')"></el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <!-- 分页组件 -->
-    <el-pagination
-      :current-page="page"
-      :total="total"
-      :page-size="limit"
-      :page-sizes="[5, 10, 20, 30, 40, 50, 100]"
-      style="padding: 30px 0; text-align: center"
-      layout="sizes, prev, pager, next, jumper, ->, total, slot"
-      @current-change="fetchData"
-      @size-change="changeSize"
-    />
+    <el-pagination :current-page="page" :total="total" :page-size="limit" :page-sizes="[5, 10, 20, 30, 40, 50, 100]"
+      style="padding: 30px 0; text-align: center" layout="sizes, prev, pager, next, jumper, ->, total, slot"
+      @current-change="fetchData" @size-change="changeSize" />
   </div>
 </template>
 

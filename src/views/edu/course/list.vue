@@ -7,19 +7,13 @@
       </el-form-item>
 
       <el-form-item>
-        <el-select
-          v-model="courseQuery.status"
-          clearable
-          placeholder="课程状态"
-        >
+        <el-select v-model="courseQuery.status" clearable placeholder="课程状态">
           <el-option value="Normal" label="已发布" />
           <el-option value="Draft" label="未发布" />
         </el-select>
       </el-form-item>
 
-      <el-button type="primary" icon="el-icon-search" @click="getList()"
-        >查询</el-button
-      >
+      <el-button type="primary" icon="el-icon-search" @click="getList()">查询</el-button>
       <el-button type="default" @click="resetData()">清空</el-button>
     </el-form>
 
@@ -48,35 +42,20 @@
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
           <router-link :to="'/course/info/' + scope.row.id">
-            <el-button type="text" size="mini" icon="el-icon-edit"
-              >编辑课程基本信息</el-button
-            >
+            <el-button type="text" size="mini" icon="el-icon-edit">编辑课程基本信息</el-button>
           </router-link>
           <router-link :to="'/course/chapter/' + scope.row.id">
-            <el-button type="text" size="mini" icon="el-icon-edit"
-              >编辑课程大纲信息</el-button
-            >
+            <el-button type="text" size="mini" icon="el-icon-edit">编辑课程大纲信息</el-button>
           </router-link>
-          <el-button
-            type="text"
-            size="mini"
-            icon="el-icon-delete"
-            @click="removeDataById(scope.row.id)"
-            >删除课程信息</el-button
-          >
+          <el-button type="text" size="mini" icon="el-icon-delete" @click="removeDataById(scope.row.id)">删除课程信息
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <!-- 分页 -->
-    <el-pagination
-      :current-page="page"
-      :page-size="limit"
-      :total="total"
-      style="padding: 30px 0; text-align: center"
-      layout="total, prev, pager, next, jumper"
-      @current-change="getList"
-    />
+    <el-pagination :current-page="page" :page-size="limit" :total="total" style="padding: 30px 0; text-align: center"
+      layout="total, prev, pager, next, jumper" @current-change="getList" />
   </div>
 </template>
 <script>

@@ -1,18 +1,9 @@
 <template>
   <div style="margin: 20px 20px">
-    <el-tree
-      :data="data"
-      show-checkbox
-      default-expand-all
-      node-key="id"
-      ref="tree"
-      highlight-current
-      :props="defaultProps"
-    >
+    <el-tree :data="data" show-checkbox default-expand-all node-key="id" ref="tree" highlight-current
+      :props="defaultProps">
     </el-tree>
-    <el-button :disabled="saveBtnDisabled" type="primary" @click="save"
-      >保存</el-button
-    >
+    <el-button :disabled="saveBtnDisabled" type="primary" @click="save">保存</el-button>
   </div>
 </template>
 <script>

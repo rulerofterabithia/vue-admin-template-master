@@ -2,12 +2,7 @@
   <div class="app-container">
     <h2 style="text-align: center">发布新课程</h2>
 
-    <el-steps
-      :active="2"
-      process-status="wait"
-      align-center
-      style="margin-bottom: 40px"
-    >
+    <el-steps :active="2" process-status="wait" align-center style="margin-bottom: 40px">
       <el-step title="填写课程基本信息" />
 
       <el-step title="创建课程大纲" />
@@ -23,15 +18,9 @@
         <p>
           {{ chapter.title }}
           <span class="acts">
-            <el-button style="" type="text" @click="openVideo(chapter.id)"
-              >添加小节</el-button
-            >
-            <el-button style="" type="text" @click="openEditChatper(chapter.id)"
-              >编辑</el-button
-            >
-            <el-button type="text" @click="removeChapter(chapter.id)"
-              >删除</el-button
-            >
+            <el-button style="" type="text" @click="openVideo(chapter.id)">添加小节</el-button>
+            <el-button style="" type="text" @click="openEditChatper(chapter.id)">编辑</el-button>
+            <el-button type="text" @click="removeChapter(chapter.id)">删除</el-button>
           </span>
         </p>
 
@@ -41,12 +30,8 @@
             <p>
               {{ video.title }}
               <span class="acts">
-                <el-button type="text" @click="getVideoInfo(video.id)"
-                  >编辑</el-button
-                >
-                <el-button type="text" @click="removeVideo(video.id)"
-                  >删除</el-button
-                >
+                <el-button type="text" @click="getVideoInfo(video.id)">编辑</el-button>
+                <el-button type="text" @click="removeVideo(video.id)">删除</el-button>
               </span>
             </p>
           </li>
@@ -55,9 +40,7 @@
     </ul>
     <div>
       <el-button @click="previous">上一步</el-button>
-      <el-button :disabled="saveBtnDisabled" type="primary" @click="next"
-        >下一步</el-button
-      >
+      <el-button :disabled="saveBtnDisabled" type="primary" @click="next">下一步</el-button>
     </div>
 
     <!-- 添加和修改章节表单 -->
@@ -67,11 +50,7 @@
           <el-input v-model="chapter.title" />
         </el-form-item>
         <el-form-item label="章节排序">
-          <el-input-number
-            v-model="chapter.sort"
-            :min="0"
-            controls-position="right"
-          />
+          <el-input-number v-model="chapter.sort" :min="0" controls-position="right" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -87,11 +66,7 @@
           <el-input v-model="video.title" />
         </el-form-item>
         <el-form-item label="课时排序">
-          <el-input-number
-            v-model="video.sort"
-            :min="0"
-            controls-position="right"
-          />
+          <el-input-number v-model="video.sort" :min="0" controls-position="right" />
         </el-form-item>
         <el-form-item label="是否免费">
           <el-radio-group v-model="video.free">
@@ -100,16 +75,9 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="上传视频">
-          <el-upload
-            :on-success="handleVodUploadSuccess"
-            :on-remove="handleVodRemove"
-            :before-remove="beforeVodRemove"
-            :on-exceed="handleUploadExceed"
-            :file-list="fileList"
-            :action="BASE_API + '/eduvod/video/uploadAliyunVideo'"
-            :limit="1"
-            class="upload-demo"
-          >
+          <el-upload :on-success="handleVodUploadSuccess" :on-remove="handleVodRemove" :before-remove="beforeVodRemove"
+            :on-exceed="handleUploadExceed" :file-list="fileList" :action="BASE_API + '/eduvod/video/uploadAliyunVideo'"
+            :limit="1" class="upload-demo">
             <el-button size="small" type="primary">上传视频</el-button>
             <el-tooltip placement="right-end">
               <div slot="content">
@@ -126,12 +94,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogVideoFormVisible = false">取 消</el-button>
-        <el-button
-          :disabled="saveVideoBtnDisabled"
-          type="primary"
-          @click="saveOrUpdateVideo(video.id)"
-          >确 定</el-button
-        >
+        <el-button :disabled="saveVideoBtnDisabled" type="primary" @click="saveOrUpdateVideo(video.id)">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -387,6 +350,7 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 /* .chapterList ul {
   list-style: none;
 } */
@@ -394,6 +358,7 @@ export default {
   position: relative;
   list-style: none;
 }
+
 .chapterList p {
   float: left;
   font-size: 20px;
@@ -404,6 +369,7 @@ export default {
   width: 100%;
   border: 1px solid #ddd;
 }
+
 .chapterList .acts {
   float: right;
   font-size: 14px;
@@ -412,6 +378,7 @@ export default {
 .videoList {
   padding-left: 50px;
 }
+
 .videoList p {
   float: left;
   font-size: 14px;

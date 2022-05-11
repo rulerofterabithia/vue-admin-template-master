@@ -1,19 +1,9 @@
 <template>
   <div class="app-container">
-    <el-input
-      v-model="filterText"
-      placeholder="Filter keyword"
-      style="margin-bottom: 30px"
-    />
+    <el-input v-model="filterText" placeholder="Filter keyword" style="margin-bottom: 30px" />
 
-    <el-table
-      :data="menuList"
-      style="width: 100%; margin-bottom: 20px"
-      row-key="id"
-      border
-      default-expand-all
-      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
-    >
+    <el-table :data="menuList" style="width: 100%; margin-bottom: 20px" row-key="id" border default-expand-all
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }">
       <el-table-column prop="name" label="名称" sortable width="180">
       </el-table-column>
       <el-table-column prop="path" label="访问路径" sortable width="180">
@@ -24,64 +14,36 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <!-- v-if="node.level == 1 || node.level == 2" v-if="node.level == 3" v-if="node.level == 4"-->
-          <el-button
-            v-if="
-              (scope.row.level == 1 || scope.row.level == 2) &&
-              hasPerm('permission.add')
-            "
-            type="text"
-            size="mini"
-            @click="
-              () => {
-                (dialogFormVisible = true), (menu.pid = scope.row.id);
-              }
-            "
-            >添加菜单
+          <el-button v-if="
+            (scope.row.level == 1 || scope.row.level == 2) &&
+            hasPerm('permission.add')
+          " type="text" size="mini" @click="
+  () => {
+    (dialogFormVisible = true), (menu.pid = scope.row.id);
+  }
+">添加菜单
           </el-button>
-          <el-button
-            v-if="scope.row.level == 3 && hasPerm('permission.add')"
-            type="text"
-            size="mini"
-            @click="
-              () => {
-                (dialogPermissionVisible = true),
-                  (permission.pid = scope.row.id);
-              }
-            "
-            >添加功能
+          <el-button v-if="scope.row.level == 3 && hasPerm('permission.add')" type="text" size="mini" @click="
+            () => {
+              (dialogPermissionVisible = true),
+                (permission.pid = scope.row.id);
+            }
+          ">添加功能
           </el-button>
-          <el-button
-            v-if="scope.row.level == 4 && hasPerm('permission.update')"
-            type="text"
-            size="mini"
-            @click="() => updateFunction(scope.row)"
-            >修改功能
+          <el-button v-if="scope.row.level == 4 && hasPerm('permission.update')" type="text" size="mini"
+            @click="() => updateFunction(scope.row)">修改功能
           </el-button>
-          <el-button
-            v-if="scope.row.level != 4 && hasPerm('permission.update')"
-            type="text"
-            size="mini"
-            @click="() => getById(scope.row)"
-            >修改
+          <el-button v-if="scope.row.level != 4 && hasPerm('permission.update')" type="text" size="mini"
+            @click="() => getById(scope.row)">修改
           </el-button>
-          <el-button
-            type="text"
-            size="mini"
-            @click="() => remove(scope.row)"
-            v-if="hasPerm('permission.remove')"
-            >删除
+          <el-button type="text" size="mini" @click="() => remove(scope.row)" v-if="hasPerm('permission.remove')">删除
           </el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <el-dialog :visible.sync="dialogFormVisible" :title="dialogFormValue">
-      <el-form
-        ref="menu"
-        :model="menu"
-        :rules="menuValidateRules"
-        label-width="120px"
-      >
+      <el-form ref="menu" :model="menu" :rules="menuValidateRules" label-width="120px">
         <el-form-item label="菜单名称" prop="name">
           <el-input v-model="menu.name" />
         </el-form-item>
@@ -99,12 +61,7 @@
     </el-dialog>
     <!-- 添加功能的窗口 -->
     <el-dialog :visible.sync="dialogPermissionVisible" title="添加功能">
-      <el-form
-        ref="permission"
-        :model="permission"
-        :rules="permissionValidateRules"
-        label-width="120px"
-      >
+      <el-form ref="permission" :model="permission" :rules="permissionValidateRules" label-width="120px">
         <el-form-item label="功能名称" prop="name">
           <el-input v-model="permission.name" />
         </el-form-item>
