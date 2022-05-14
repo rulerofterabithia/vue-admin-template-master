@@ -15,7 +15,7 @@
         <el-input v-model="courseInfo.title" placeholder=" 示例：机器学习项目课：从基础到搭建项目视频课程。专业名称注意大小写" />
       </el-form-item>
 
-      <!-- 课程分类 TODO -->
+      <!-- 课程分类-->
       <el-form-item label="课程分类">
         <el-select v-model="courseInfo.subjectParentId" placeholder="一级分类" @change="subjectLevelOneChanged">
           <el-option v-for="subject in subjectOneList" :key="subject.id" :label="subject.title" :value="subject.id" />
@@ -27,7 +27,6 @@
         </el-select>
       </el-form-item>
 
-      <!-- 课程讲师 TODO -->
       <!-- 课程讲师 -->
       <el-form-item label="课程讲师">
         <el-select v-model="courseInfo.teacherId" placeholder="请选择">
@@ -39,12 +38,11 @@
         <el-input-number :min="0" v-model="courseInfo.lessonNum" controls-position="right" placeholder="请填写课程的总课时数" />
       </el-form-item>
 
-      <!-- 课程简介 TODO -->
+      <!-- 课程简介-->
       <el-form-item label="课程简介">
         <tinymce :height="300" v-model="courseInfo.description" />
       </el-form-item>
 
-      <!-- 课程封面 TODO -->
       <!-- 课程封面-->
       <el-form-item label="课程封面">
         <el-upload :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload"
